@@ -276,9 +276,9 @@ df1[['lat', 'long']] = df1[['lat', 'long']].astype(float)
 
 #plt.show()
 
-plt.scatter([1, 2, 3], [4, 5, 6])
-plt.show()
 
+plt.scatter(df1['long'], df1['lat'])
+plt.show()
 
 
 
