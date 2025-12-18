@@ -6,6 +6,9 @@ from pandas._libs.tslibs.offsets import BusinessMixin
 
 import matplotlib.pyplot as plt
 
+
+
+
 # Let's read this csv data file into a dataframe:
 
 df = pd.read_csv("business-licences.csv", sep=";", low_memory = False)
@@ -296,3 +299,25 @@ plt.tight_layout()
 plt.show()
 
 
+
+# It looks crowded, so let's use faceting to separate by BusinessType instead:
+
+
+g = sns.relplot(
+    data=df1,
+    x='long',
+    y='lat',
+    col='BusinessType',
+    col_wrap=4,            # panels per row
+    height=3,              # height per facet (inches)
+    aspect=1,              # width = height * aspect
+    kind='scatter',
+    s=10,
+    alpha=0.6,
+    facet_kws={'sharex': True, 'sharey': True}
+)
+
+g.set_axis_labels("Longitude", "Latitude")
+plt.tight_layout()
+plt.show()  # optional
+print("Saved faceted_business_locations.png")
