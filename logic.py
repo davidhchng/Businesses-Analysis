@@ -371,8 +371,10 @@ def plot_map(business_type, local_area):
             'Exit': 'x',
             'Other': 'triangle-up' # Distinct shapes
     }
-            
+      
     )
+
+    fig.update_traces(marker=dict(size=9)) # for size tweaks
 
     fig.update_layout(
         height = 1200,
