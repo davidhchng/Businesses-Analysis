@@ -35,7 +35,7 @@ def render_level(level):
 st.title("Vancouver Business Registrations: Inferences for Market Interpretation")
 
 st.markdown(
-    "<h3 style='fontsize:0.5rem;margin-top:0.2em; margin-bottom:0.5em;'>David Chang</h3>",
+    "<h3 style='font-size:0.8rem;margin-top:0.2em; margin-bottom:0.5em;'>David Chang</h3>",
     unsafe_allow_html=True
 )
 
