@@ -11,6 +11,7 @@ LEVEL_COLORS = {
 }
 
 
+
 def render_level(level):
     bg, fg = LEVEL_COLORS.get(level, ("#f2f2f2", "#333333"))
     return f"""
@@ -26,9 +27,15 @@ def render_level(level):
     ">{level}</span>
     """
 
-
+# Now on to the actual UI:
 
 st.title("Vancouver Business Registrations: Inferences for Market Interpretation")
+
+st.image("https://images.fineartamerica.com/images-medium-large-5/vancouver-skyline-wan-ru-chen.jpg",
+            caption="Vancouver Skyline (Credit: Wan-Ru Chen)",
+            use_container_width= True)
+
+
 
 # Dropdown menu
 
