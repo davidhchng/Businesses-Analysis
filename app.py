@@ -2,7 +2,16 @@ import streamlit as st
 
 import logic
 
+# Let's do some formatting idealization:
+
 st.set_page_config(layout="wide")
+
+st.set_page_config(
+    layout="centered"
+)
+
+
+
 
 
 # Let's make some color helpers
@@ -268,6 +277,18 @@ Businesses can explode, and also implode based on a nearly infinite number of fa
 what can be recorded on a registry dataset. However, using this analysis on this dataset can provide
 information on what can generally be expected.
 """)
+
+
+st.markdown(
+    """
+    <p style="font-size:1.05rem; color:#ffffff; line-height:1.6; max-width:900px;">
+    Here's a link to my GitHub, and you can view the repository for this for more information:
+
+    https://github.com/davidhchng
+
+    </p>
+    """,
+    unsafe_allow_html=True)
 
 
 
