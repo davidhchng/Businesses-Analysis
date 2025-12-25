@@ -10,6 +10,8 @@ import plotly.express as px
 import math
 
 
+ # test
+
 df = pd.read_csv("business-licences.csv", sep=";", low_memory = False)
 
 df1 = df.copy()
