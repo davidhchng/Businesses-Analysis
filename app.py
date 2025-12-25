@@ -46,7 +46,7 @@ local_area = st.selectbox(
     sorted(logic.df_filtered["LocalArea"].dropna().unique()))
 
 
-# Below is to classify colors for metrics, and classes:
+# Below has features to classify colors for metrics, classes, and has a button to go to the methods behind calculation.
 
 if st.button("Run"):
 
@@ -56,30 +56,87 @@ if st.button("Run"):
 
     st.subheader("Scores")
 
-    c1, c2 = st.columns([2, 1])
+    c1, c2, c3 = st.columns([2, 1, 2])
     with c1:
         st.metric("Concentration score", f"{result['concentration_score']:.2f}")
     with c2:
         st.markdown(render_level(result["concentration_level"]), unsafe_allow_html=True)
-
-    c3, c4 = st.columns([2, 1])
     with c3:
-        st.metric("Closure risk score", f"{result['closure_risk_score']:.2f}")
-    with c4:
-        st.markdown(render_level(result["closure_risk_level"]), unsafe_allow_html=True)
+        st.markdown(
+    """
+    <a href="#concentration" style="
+        display:inline-block;
+        padding:6px 10px;
+        border-radius:8px;
+        background:#f2f2f2;
+        color:#666;
+        text-decoration:none;
+        border:1px solid rgba(0,0,0,0.08);
+        font-size:0.85rem;
+    ">How was this calculated?</a>
+    """,
+    unsafe_allow_html=True)
 
-    c5, c6 = st.columns([2, 1])
+    c4, c5, c6 = st.columns([2, 1, 2])
+    with c4:
+        st.metric("Closure risk score", f"{result['closure_risk_score']:.2f}")
     with c5:
+        st.markdown(render_level(result["closure_risk_level"]), unsafe_allow_html=True)
+    with c6:
+            st.markdown(
+    """
+    <a href="#closure-risk" style="
+        display:inline-block;
+        padding:6px 10px;
+        border-radius:8px;
+        background:#f2f2f2;
+        color:#666;
+        text-decoration:none;
+        border:1px solid rgba(0,0,0,0.08);
+        font-size:0.85rem;
+    ">How was this calculated?</a>
+    """,
+    unsafe_allow_html=True)
+
+    c7, c8, c9 = st.columns([2, 1, 2])
+    with c7:
         rec = result["recency_score"]
         st.metric("Recency Score", "N/A" if rec is None else f"{rec:.2f}")
-    with c6:
+    with c8:
         st.markdown(render_level("Typical"), unsafe_allow_html=True)  # always neutral
+    with c9:
+             st.markdown(
+    """
+    <a href="#recency" style="
+        display:inline-block;
+        padding:6px 10px;
+        border-radius:8px;
+        background:#f2f2f2;
+        color:#666;
+        text-decoration:none;
+        border:1px solid rgba(0,0,0,0.08);
+        font-size:0.85rem;
+    ">How was this calculated?</a>
+    """,
+    unsafe_allow_html=True)
+
 
   
 
     fig = logic.plot_map(business_type, local_area)
 
     st.plotly_chart(fig, use_container_width = True)
+
+    st.divider()
+    st.header("About this Project")
+
+    st.markdown("""
+     The City of Vancouver has a rich and diverse business landscape, something that represents this is a dataset in their Open Data Portal. 
+    Said dataset holds records of the recent business registries from 2024 onwards. It is rather large, with over 130,000 registrations.
+    I took this size as an opportunity to make inferences on the market as a whole. These inferences are based on factors such as the 
+    concentration, recency, and closures of the registrations of a certain business type and location. As with anything involving data, it
+    was imperative to 
+                """)
 
 
 
