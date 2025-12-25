@@ -27,7 +27,8 @@ df1[['lat', 'long']] = df1['geo_point_2d'].str.split(',', expand = True)
 
 df1[['lat', 'long']] = df1[['lat', 'long']].astype(float)
 
-type_counts = df_filtered_1['BusinessType'].value_counts()
+
+
 
 drop_types = [
     'Information Communication Technology',
@@ -89,6 +90,8 @@ infrastructure_types = [
 
 
 df_filtered_1 = df_filtered_0[~df_filtered_0['BusinessType'].isin(infrastructure_types)].copy()
+
+type_counts = df_filtered_1['BusinessType'].value_counts()
 
 big_types = type_counts[type_counts > 299]
 
@@ -159,6 +162,10 @@ def relative_recency(business_type, local_area):
     def mean_of_recent_fraction(sub):
         n= sub.shape[0]
 
+        if n == 0:
+            return 0, None
+
+
         k = int(math.ceil(1/7 * n))
 
         recent = sub.sort_values('IssuedDate_dt', ascending = False).head(k)
@@ -194,7 +201,7 @@ def relative_recency(business_type, local_area):
 
     return rel
 
-print(relative_recency('Restaurant', 'Marpole'))
+#print(relative_recency('Restaurant', 'Marpole'))
 
 def classify_score(x):
 
