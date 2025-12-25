@@ -9,8 +9,9 @@ import plotly.express as px
 
 import math
 
+# Let's do this
 
- # test
+
 
 df = pd.read_csv("business-licences.csv", sep=";", low_memory = False)
 
@@ -303,7 +304,7 @@ def plot_map(business_type, local_area):
     df_plot = df_plot[df_plot['BusinessType'] == business_type].copy()
 
 
-     df_plot['Status Group'] = np.where(df_plot['Status'] == 'Issued',
+    df_plot['Status Group'] = np.where(df_plot['Status'] == 'Issued',
                                         'Issued',
                                     np.where(df_plot['Status'].isin(['Gone Out of Business', 'Inactive']),
                                              'Closure/Inactive',
