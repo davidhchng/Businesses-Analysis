@@ -93,7 +93,7 @@ df_filtered_1 = df_filtered_0[~df_filtered_0['BusinessType'].isin(infrastructure
 
 type_counts = df_filtered_1['BusinessType'].value_counts()
 
-big_types = type_counts[type_counts > 299]
+big_types = type_counts[type_counts > 644]
 
 big_types = big_types.index.tolist()
 
@@ -114,9 +114,15 @@ def concentration_score(business_type, local_area):
 
     D = df_issued.shape[0]
 
+    if B == 0 or D == 0 or C ==0:
+        return 0
+
     location_prop = A / B
 
     total_prop = C / D
+
+    if total_prop == 0:
+        return 0
 
     return location_prop / total_prop
 
@@ -135,18 +141,27 @@ def relative_closure_risk(business_type, local_area):
         (df_filtered['LocalArea'] == local_area) &
         (df_filtered['Status'].isin(gone_statuses))].shape[0]
 
+    if count_active == 0:
+        return 0
+
+    closure_rate = count_closure / count_active
+
     closure_rate = count_closure / count_active
 
     city_active = df_issued[df_issued['BusinessType'] == business_type].shape[0]
-
     city_closure = df_filtered[(df_filtered['BusinessType'] == business_type) &
                             (df_filtered['Status'].isin(gone_statuses))].shape[0]
 
-    baseline_closure_rate = city_closure / city_active 
+    if city_active == 0:
+        return 0
+    baseline_closure_rate = city_closure / city_active
+
+    if baseline_closure_rate == 0:
+        return 0
 
     relative_risk = closure_rate / baseline_closure_rate
-
     return relative_risk
+
 
 
 #print(relative_closure_risk('Restaurant', 'West Point Grey'))
@@ -195,6 +210,9 @@ def relative_recency(business_type, local_area):
     if baseline_age_days == 0:
         return 0
 
+    if local_age_days == 0:
+        return 0    
+
     rel = local_age_days / baseline_age_days
     
     rel = 1/rel
@@ -205,7 +223,11 @@ def relative_recency(business_type, local_area):
 
 def classify_score(x):
 
+    if x is None:
+        return "Typical"
+
     if x < 0.9:
+
         return "Low"
 
     if x > 1.1:
