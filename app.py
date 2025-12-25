@@ -31,8 +31,8 @@ def render_level(level):
 
 st.title("Vancouver Business Registrations: Inferences for Market Interpretation")
 
-st.image("https://images.fineartamerica.com/images-medium-large-5/vancouver-skyline-wan-ru-chen.jpg",
-            caption="Vancouver Skyline (Credit: Wan-Ru Chen)",
+st.image("https://images.pexels.com/photos/29072584/pexels-photo-29072584.jpeg",
+            caption="Vancouver Skyline (Credit: Luke Lawreszuk)",
             use_container_width= True)
 
 
