@@ -5,10 +5,11 @@ import logic
 # Let's make some color helpers
 
 LEVEL_COLORS = {
-    "Low": ("#d4edda", "#155724"),      # green
-    "Typical": ("#f2f2f2", "#333333"),  # white
-    "High": ("#f8d7da", "#721c24")      # red
+    "Low": ("#c3e6cb", "#155724"),      # stronger green
+    "Typical": ("#f2f2f2", "#333333"),  # unchanged
+    "High": ("#f5c6cb", "#721c24")      # stronger red
 }
+
 
 def render_level(level):
     bg, fg = LEVEL_COLORS.get(level, ("#f2f2f2", "#333333"))
