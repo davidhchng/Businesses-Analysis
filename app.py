@@ -2,6 +2,9 @@ import streamlit as st
 
 import logic
 
+st.set_page_config(layout="wide")
+
+
 # Let's make some color helpers
 
 LEVEL_COLORS = {
