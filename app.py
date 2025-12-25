@@ -280,13 +280,16 @@ information on what can generally be expected.
 st.markdown(
     """
     <p style="font-size:1.05rem; color:#ffffff; line-height:1.6; max-width:900px;">
-    Here's a link to my GitHub, and you can view the repository for this for more information:
+    Here's a link to the GitHub repository for this project, which you can view the repository for more information:
 
-    https://github.com/davidhchng
+    https://github.com/davidhchng/Vancouver-Business-Registration-Analysis
 
     </p>
     """,
     unsafe_allow_html=True)
+
+
+
 
 
 
